@@ -9,15 +9,14 @@ const schema = require('./schema/schema');
 const port = process.env.PORT || 5000;
 const app = express();
 
-// Connect to database
-
-
+// Route
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: process.env.NODE_ENV === 'development',
   })
 );
 
+// Connect to database and start app...
 connectDB()
   .then(() => {
     app.listen(port, () => (
