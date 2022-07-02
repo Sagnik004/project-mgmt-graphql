@@ -1,6 +1,7 @@
 const express = require('express');
 const colors = require('colors');
 const { graphqlHTTP } = require('express-graphql');
+const cors = require('cors');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
@@ -8,6 +9,8 @@ const schema = require('./schema/schema');
 
 const port = process.env.PORT || 5000;
 const app = express();
+
+app.use(cors());
 
 // Route
 app.use('/graphql', graphqlHTTP({
